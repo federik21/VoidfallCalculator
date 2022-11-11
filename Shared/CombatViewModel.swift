@@ -28,8 +28,8 @@ class CombatViewModel {
   print("start Approach step")
    while sectorDefenses > 0 {
      sectorDefenses -= 1
-      print("attacker suffers damage")
-      attacker.sufferDamage()
+      print("attacker")
+      attacker.sufferApproachDamage()
     }
     repeatSalvo()
   }
@@ -42,24 +42,24 @@ class CombatViewModel {
       return
     }
     if attacker.initiative == defender.initiative {
-      print("attacker suffers damage")
-      attacker.sufferDamage()
-      print("defender suffers damage")
-      defender.sufferDamage()
+      print("attacker")
+      attacker.sufferSalvoDamage()
+      print("defender")
+      defender.sufferSalvoDamage()
     } else if attacker.initiative > defender.initiative {
-      print("defender suffers damage")
+      print("defender")
 
-      defender.sufferDamage()
+      defender.sufferSalvoDamage()
       if defender.power > 0 {
-        print("then attacker suffers damage")
-        attacker.sufferDamage()
+        print("then attacker ")
+        attacker.sufferSalvoDamage()
       }
     } else if attacker.initiative < defender.initiative {
-      print("attacker suffers damage")
-      attacker.sufferDamage()
+      print("attacker ")
+      attacker.sufferSalvoDamage()
       if attacker.power > 0 {
-        print("then defender suffers damage")
-        defender.sufferDamage()
+        print("then defender")
+        defender.sufferSalvoDamage()
       }
     }
     repeatSalvo()
@@ -69,6 +69,5 @@ class CombatViewModel {
     print("final result")
     print("attacker \(attacker.power)")
     print("defender \(defender.power)")
-
   }
 }
