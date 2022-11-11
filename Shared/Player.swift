@@ -8,12 +8,17 @@
 import Foundation
 
 enum Technology {
-  case shields, shieldsV2
+  case shields, shieldsV2, autoDrones, autoDronesV2
+}
+
+enum Side {
+  case attacker, defender
 }
 
 class Player {
   var fleets: [Fleet]
   var technologies: [Technology] = []
+  var side: Side
 
   var hasCorvettes: Bool {
     for fleet in fleets {
@@ -23,6 +28,9 @@ class Player {
     }
     return false
   }
+
+  var approachAbsorption: Int = 0
+  var salvoAbsorption: Int = 0
 
   var initiative: Int {
     var initiative = 0
@@ -39,15 +47,25 @@ class Player {
     return initiative
   }
 
-  init(fleets: [Fleet]) {
+  init(fleets: [Fleet], side: Side) {
     self.fleets = fleets
+    self.side = side
   }
 
   var advShieldsUsed: Bool = false
 
+  func enterApproachStep() {
+    if hasCorvettes && technologies.contains(.shieldsV2) {
+      approachAbsorption += 1
+    }
+    if side == .attacker, technologies.contains(.autoDrones), technologies.contains(.autoDronesV2) {
+      approachAbsorption += 1
+    }
+  }
+
   func sufferApproachDamage() {
-    if hasCorvettes && technologies.contains(.shieldsV2)  && !advShieldsUsed {
-      advShieldsUsed = true
+    if approachAbsorption > 0 {
+      approachAbsorption -= 1
       print("prevented approach damage")
       return
     }
@@ -56,11 +74,21 @@ class Player {
     fleets.first?.damage()
   }
 
-  var shieldsUsed: Bool = false
+  func enterSalvoStep(){
+    if hasCorvettes && (technologies.contains(.shields) || technologies.contains(.shieldsV2)) {
+      salvoAbsorption += 1
+    }
+    if side == .attacker, technologies.contains(.autoDrones) {
+      approachAbsorption += 1
+      if technologies.contains(.autoDronesV2) {
+        approachAbsorption += 1
+      }
+    }
+  }
 
   func sufferSalvoDamage() {
-    if hasCorvettes && technologies.contains(.shields) || technologies.contains(.shieldsV2) && !shieldsUsed {
-      shieldsUsed = true
+    if salvoAbsorption > 0 {
+      salvoAbsorption -= 1
       print("prevented salvo damage")
       return
     }

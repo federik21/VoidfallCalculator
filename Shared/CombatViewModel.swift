@@ -21,20 +21,28 @@ class CombatViewModel {
 
   func combat() {
     print("start Combat step")
-    approach()
+    approachStep()
   }
 
-  func approach() {
+  func approachStep() {
+    attacker.enterApproachStep()
+    defender.enterApproachStep()
   print("start Approach step")
    while sectorDefenses > 0 {
      sectorDefenses -= 1
       print("attacker")
       attacker.sufferApproachDamage()
     }
-    repeatSalvo()
+    firstSalvo()
   }
 
-  func repeatSalvo() {
+  func firstSalvo(){
+    attacker.enterSalvoStep()
+    defender.enterSalvoStep()
+    salvoStep()
+  }
+
+  func salvoStep() {
     print("salvo step")
     guard attacker.power > 0, defender.power > 0 else {
       print("no more fleet power on one side, combat is over")
@@ -62,7 +70,7 @@ class CombatViewModel {
         defender.sufferSalvoDamage()
       }
     }
-    repeatSalvo()
+    salvoStep()
   }
 
   func combatComplete() {
