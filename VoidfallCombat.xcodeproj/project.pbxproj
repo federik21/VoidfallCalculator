@@ -13,7 +13,24 @@
 		BB7E3862291E69DB007A2B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3850291E69DA007A2B88 /* ContentView.swift */; };
 		BB7E3863291E69DB007A2B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7E3851291E69DB007A2B88 /* Assets.xcassets */; };
 		BB7E3864291E69DB007A2B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7E3851291E69DB007A2B88 /* Assets.xcassets */; };
+		BB7E386F291E69FE007A2B88 /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E386E291E69FE007A2B88 /* Ships.swift */; };
+		BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
+		BB7E3873291E6F61007A2B88 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3872291E6F61007A2B88 /* Player.swift */; };
+		BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */; };
+		BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
+		BB7E3885291E7455007A2B88 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3872291E6F61007A2B88 /* Player.swift */; };
+		BB7E3886291E7466007A2B88 /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E386E291E69FE007A2B88 /* Ships.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB7E387E291E742A007A2B88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB7E384A291E69DA007A2B88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB7E3855291E69DB007A2B88;
+			remoteInfo = "VoidfallCombat (iOS)";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidfallCombatApp.swift; sourceTree = "<group>"; };
@@ -22,6 +39,11 @@
 		BB7E3856291E69DB007A2B88 /* VoidfallCombat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoidfallCombat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7E385C291E69DB007A2B88 /* VoidfallCombat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoidfallCombat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7E385E291E69DB007A2B88 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		BB7E386E291E69FE007A2B88 /* Ships.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ships.swift; sourceTree = "<group>"; };
+		BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewModel.swift; sourceTree = "<group>"; };
+		BB7E3872291E6F61007A2B88 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		BB7E387A291E742A007A2B88 /* VoidfallCombatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoidfallCombatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidfallCombatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +61,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB7E3877291E742A007A2B88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -47,6 +76,7 @@
 			children = (
 				BB7E384E291E69DA007A2B88 /* Shared */,
 				BB7E385D291E69DB007A2B88 /* macOS */,
+				BB7E387B291E742A007A2B88 /* VoidfallCombatTests */,
 				BB7E3857291E69DB007A2B88 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,7 +86,10 @@
 			children = (
 				BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */,
 				BB7E3850291E69DA007A2B88 /* ContentView.swift */,
+				BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */,
+				BB7E3872291E6F61007A2B88 /* Player.swift */,
 				BB7E3851291E69DB007A2B88 /* Assets.xcassets */,
+				BB7E386D291E69EA007A2B88 /* ships */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -66,6 +99,7 @@
 			children = (
 				BB7E3856291E69DB007A2B88 /* VoidfallCombat.app */,
 				BB7E385C291E69DB007A2B88 /* VoidfallCombat.app */,
+				BB7E387A291E742A007A2B88 /* VoidfallCombatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +110,22 @@
 				BB7E385E291E69DB007A2B88 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		BB7E386D291E69EA007A2B88 /* ships */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E386E291E69FE007A2B88 /* Ships.swift */,
+			);
+			path = ships;
+			sourceTree = "<group>";
+		};
+		BB7E387B291E742A007A2B88 /* VoidfallCombatTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */,
+			);
+			path = VoidfallCombatTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +165,24 @@
 			productReference = BB7E385C291E69DB007A2B88 /* VoidfallCombat.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BB7E3879291E742A007A2B88 /* VoidfallCombatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB7E3880291E742A007A2B88 /* Build configuration list for PBXNativeTarget "VoidfallCombatTests" */;
+			buildPhases = (
+				BB7E3876291E742A007A2B88 /* Sources */,
+				BB7E3877291E742A007A2B88 /* Frameworks */,
+				BB7E3878291E742A007A2B88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB7E387F291E742A007A2B88 /* PBXTargetDependency */,
+			);
+			name = VoidfallCombatTests;
+			productName = VoidfallCombatTests;
+			productReference = BB7E387A291E742A007A2B88 /* VoidfallCombatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -130,6 +198,10 @@
 					};
 					BB7E385B291E69DB007A2B88 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					BB7E3879291E742A007A2B88 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = BB7E3855291E69DB007A2B88;
 					};
 				};
 			};
@@ -148,6 +220,7 @@
 			targets = (
 				BB7E3855291E69DB007A2B88 /* VoidfallCombat (iOS) */,
 				BB7E385B291E69DB007A2B88 /* VoidfallCombat (macOS) */,
+				BB7E3879291E742A007A2B88 /* VoidfallCombatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +242,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB7E3878291E742A007A2B88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -176,7 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7E386F291E69FE007A2B88 /* Ships.swift in Sources */,
 				BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */,
+				BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */,
+				BB7E3873291E6F61007A2B88 /* Player.swift in Sources */,
 				BB7E385F291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +273,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB7E3876291E742A007A2B88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */,
+				BB7E3886291E7466007A2B88 /* Ships.swift in Sources */,
+				BB7E3885291E7455007A2B88 /* Player.swift in Sources */,
+				BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB7E387F291E742A007A2B88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB7E3855291E69DB007A2B88 /* VoidfallCombat (iOS) */;
+			targetProxy = BB7E387E291E742A007A2B88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BB7E3865291E69DB007A2B88 /* Debug */ = {
@@ -419,6 +521,47 @@
 			};
 			name = Release;
 		};
+		BB7E3881291E742A007A2B88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9U7FMUNNDS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fp.VoidfallCombatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoidfallCombat.app/VoidfallCombat";
+			};
+			name = Debug;
+		};
+		BB7E3882291E742A007A2B88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9U7FMUNNDS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fp.VoidfallCombatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoidfallCombat.app/VoidfallCombat";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +588,15 @@
 			buildConfigurations = (
 				BB7E386B291E69DB007A2B88 /* Debug */,
 				BB7E386C291E69DB007A2B88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB7E3880291E742A007A2B88 /* Build configuration list for PBXNativeTarget "VoidfallCombatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB7E3881291E742A007A2B88 /* Debug */,
+				BB7E3882291E742A007A2B88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
