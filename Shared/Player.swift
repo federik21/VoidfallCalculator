@@ -8,7 +8,8 @@
 import Foundation
 
 enum Technology {
-  case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2
+  case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2,
+       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY
 }
 
 enum Side {
@@ -91,14 +92,16 @@ class Player {
     }
   }
 
-  func sufferApproachDamage() {
-    if approachAbsorption > 0 {
-      approachAbsorption -= 1
-      print("prevented approach damage")
-      return
+  func sufferApproachDamage(total: Int) {
+    for _ in 1...total {
+      if approachAbsorption > 0 {
+        approachAbsorption -= 1
+        print("prevented approach damage")
+      } else {
+        print("suffers damage")
+        fleets.first(where: {$0.power > 0})?.damage()
+      }
     }
-    print("suffers damage")
-    fleets.first(where: {$0.power > 0})?.damage()
   }
 
   func sufferSalvoDamage(plus additionalDamage: Int = 0) {

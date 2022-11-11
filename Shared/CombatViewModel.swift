@@ -28,15 +28,40 @@ class CombatViewModel {
     print("start Approach step")
     attacker.enterApproachStep()
     defender.enterApproachStep()
+    var damageForAttacker = 0
+    var damageForDefender = 0
     if attacker.destroyers.power > 0 && attacker.technologies.contains(.destroyersV2) {
-      print("defender")
-      defender.sufferApproachDamage()
+      damageForDefender += 1
+    }
+    if attacker.technologies.contains(.deepSpaceMissiles) {
+      damageForDefender += 1
+    }
+    if attacker.technologies.contains(.deepSpaceMissilesV2oneSY) {
+      damageForDefender += 1
+    }
+    if attacker.technologies.contains(.deepSpaceMissilesV2twoSY) {
+      damageForDefender += 2
+    }
+    if defender.technologies.contains(.deepSpaceMissilesV2oneSY) {
+      damageForAttacker += 1
+    }
+    if defender.technologies.contains(.deepSpaceMissilesV2twoSY) {
+      damageForAttacker += 2
     }
     while sectorDefenses > 0 {
       sectorDefenses -= 1
-      print("attacker")
-      attacker.sufferApproachDamage()
+      damageForAttacker += 1
     }
+
+    if damageForDefender > 0 {
+      print("defender")
+      defender.sufferApproachDamage(total: damageForDefender)
+    }
+    if damageForAttacker > 0 {
+      print("attacker")
+      attacker.sufferApproachDamage(total: damageForAttacker)
+    }
+    print("attacker")
     startSalvo()
   }
 
