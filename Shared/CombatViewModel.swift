@@ -28,22 +28,27 @@ class CombatViewModel {
     print("start Approach step")
     attacker.enterApproachStep()
     defender.enterApproachStep()
-   while sectorDefenses > 0 {
-     sectorDefenses -= 1
+    if attacker.destroyers.power > 0 && attacker.technologies.contains(.destroyersV2) {
+      print("defender")
+      defender.sufferApproachDamage()
+    }
+    while sectorDefenses > 0 {
+      sectorDefenses -= 1
       print("attacker")
       attacker.sufferApproachDamage()
     }
-    firstSalvo()
+    startSalvo()
   }
 
-  func firstSalvo(){
+  func startSalvo(){
     print("Start salvo step")
     attacker.enterSalvoStep()
     defender.enterSalvoStep()
-    salvoStep()
+
+    salvoStep(additionalAttackerDamage: attacker.destroyers.power)
   }
 
-  func salvoStep() {
+  func salvoStep(additionalAttackerDamage: Int = 0) {
     print("salvo step")
     guard attacker.power > 0, defender.power > 0 else {
       print("no more fleet power on one side, combat is over")
@@ -54,11 +59,11 @@ class CombatViewModel {
       print("attacker")
       attacker.sufferSalvoDamage()
       print("defender")
-      defender.sufferSalvoDamage()
+      defender.sufferSalvoDamage(plus: additionalAttackerDamage)
     } else if attacker.initiative > defender.initiative {
       print("defender")
 
-      defender.sufferSalvoDamage()
+      defender.sufferSalvoDamage(plus: additionalAttackerDamage)
       if defender.power > 0 {
         print("then attacker ")
         attacker.sufferSalvoDamage()
@@ -68,7 +73,7 @@ class CombatViewModel {
       attacker.sufferSalvoDamage()
       if attacker.power > 0 {
         print("then defender")
-        defender.sufferSalvoDamage()
+        defender.sufferSalvoDamage(plus: additionalAttackerDamage)
       }
     }
     salvoStep()

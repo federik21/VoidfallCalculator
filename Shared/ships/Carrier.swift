@@ -8,9 +8,6 @@
 import Foundation
 
 class Carrier: Fleet {
-  var initiative: Int {
-    return power
-  }
   var deployablePower: Int
   var power: Int
 

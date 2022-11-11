@@ -123,4 +123,27 @@ class VoidfallCombatTests: XCTestCase {
     assert(attacker.power == 0)
     assert(defender.power == 0)
   }
+
+  func testDestroyers() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.destroyers.power = 2
+    defender.carriers.power = 1
+    defender.corvettes.power = 2
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
+  }
+
+  func testDestroyers2() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.destroyers.power = 2
+    defender.corvettes.power = 4
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
+  }
 }

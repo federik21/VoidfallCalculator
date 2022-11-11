@@ -8,9 +8,6 @@
 import Foundation
 
 class Corvette: Fleet {
-  var initiative: Int {
-    return power
-  }
   var power: Int
   init(power: Int) {
     self.power = power
@@ -18,10 +15,4 @@ class Corvette: Fleet {
   func damage() {
     self.power -= 1
   }
-}
-
-protocol Fleet {
-  var power: Int {get set}
-  var initiative: Int {get}
-  func damage()
 }

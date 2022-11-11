@@ -8,7 +8,7 @@
 import Foundation
 
 enum Technology {
-  case shields, shieldsV2, autoDrones, autoDronesV2
+  case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2
 }
 
 enum Side {
@@ -16,15 +16,16 @@ enum Side {
 }
 
 enum FleetTypes {
-  case corvette, carrier
+  case corvette, carrier, destroyer
 }
 
 class Player {
   var corvettes: Corvette = Corvette(power: 0)
   var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
+  var destroyers: Destroyer = Destroyer()
 
   var fleets: [Fleet] {
-    return [corvettes, carriers]
+    return [corvettes, carriers, destroyers]
   }
   var technologies: [Technology] = []
   var side: Side
@@ -35,16 +36,20 @@ class Player {
   var initiative: Int {
     var initiative = 0
     for fleet in fleets {
-      initiative += fleet.initiative
+      initiative += fleet.power
+      if fleet is Destroyer && fleet.power > 0 {
+        initiative += 1
+      }
     }
     return initiative
   }
+
   var power: Int {
     var power = 0
     for fleet in fleets {
       power += fleet.power
     }
-    return initiative
+    return power
   }
 
   init(side: Side) {
@@ -96,13 +101,15 @@ class Player {
     fleets.first(where: {$0.power > 0})?.damage()
   }
 
-  func sufferSalvoDamage() {
-    if salvoAbsorption > 0 {
-      salvoAbsorption -= 1
-      print("prevented salvo damage")
-      return
+  func sufferSalvoDamage(plus additionalDamage: Int = 0) {
+    for _ in 1...(1 + additionalDamage) {
+      if salvoAbsorption > 0 {
+        salvoAbsorption -= 1
+        print("prevented salvo damage")
+      } else {
+        print("suffers damage")
+        fleets.first(where: {$0.power > 0})?.damage()
+      }
     }
-    print("suffers damage")
-    fleets.first(where: {$0.power > 0})?.damage()
   }
 }
