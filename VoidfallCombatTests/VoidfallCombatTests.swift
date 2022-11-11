@@ -33,8 +33,10 @@ class VoidfallCombatTests: XCTestCase {
     }
   
   func testCombat() {
-    let attacker = Player(fleets: [Corvette(power: 3)], side: .attacker)
-    let defender = Player(fleets: [Corvette(power: 2)], side: .defender)
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.corvettes.power = 2
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
     assert(attacker.power == 2)
@@ -42,8 +44,10 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat2() {
-    let attacker = Player(fleets: [Corvette(power: 3)], side: .attacker)
-    let defender = Player(fleets: [Corvette(power: 2)], side: .defender)
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.corvettes.power = 2
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 1)
     combat.combat()
     assert(attacker.power == 0)
@@ -51,8 +55,10 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat3() {
-    let attacker = Player(fleets: [Corvette(power: 3)], side: .attacker)
-    let defender = Player(fleets: [Corvette(power: 2)], side: .defender)
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.corvettes.power = 2
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 2)
     combat.combat()
     assert(attacker.power == 0)
@@ -60,9 +66,11 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat4() {
-    let attacker = Player(fleets: [Corvette(power: 3)], side: .attacker)
+    let attacker = Player(side: .invader)
     attacker.technologies = [.shields]
-    let defender = Player(fleets: [Corvette(power: 3)], side: .defender)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.corvettes.power = 3
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
     assert(attacker.power == 2)
@@ -70,10 +78,47 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat5() {
-    let attacker = Player(fleets: [Corvette(power: 3)], side: .attacker)
+    let attacker = Player(side: .invader)
     attacker.technologies = [.shieldsV2]
-    let defender = Player(fleets: [Corvette(power: 3)], side: .defender)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.corvettes.power = 3
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 2)
+    combat.combat()
+    assert(attacker.power == 0)
+    assert(defender.power == 0)
+  }
+
+  func testCombatCarrier() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 1
+    attacker.carriers.power = 1
+    attacker.carriers.deployablePower = 1
+    defender.corvettes.power = 2
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 2)
+    assert(defender.power == 0)
+  }
+
+  func testCombatCarrier2() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.carriers.power = 2
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 0)
+    assert(defender.power == 2)
+  }
+
+  func testCombatCarrier3() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 3
+    defender.carriers.power = 1
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 1)
     combat.combat()
     assert(attacker.power == 0)
     assert(defender.power == 0)

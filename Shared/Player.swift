@@ -12,22 +12,22 @@ enum Technology {
 }
 
 enum Side {
-  case attacker, defender
+  case invader, defender
+}
+
+enum FleetTypes {
+  case corvette, carrier
 }
 
 class Player {
-  var fleets: [Fleet]
+  var corvettes: Corvette = Corvette(power: 0)
+  var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
+
+  var fleets: [Fleet] {
+    return [corvettes, carriers]
+  }
   var technologies: [Technology] = []
   var side: Side
-
-  var hasCorvettes: Bool {
-    for fleet in fleets {
-      if fleet.power > 0, fleet is Corvette {
-        return true
-      }
-    }
-    return false
-  }
 
   var approachAbsorption: Int = 0
   var salvoAbsorption: Int = 0
@@ -47,19 +47,42 @@ class Player {
     return initiative
   }
 
-  init(fleets: [Fleet], side: Side) {
-    self.fleets = fleets
+  init(side: Side) {
     self.side = side
   }
 
-  var advShieldsUsed: Bool = false
-
   func enterApproachStep() {
-    if hasCorvettes && technologies.contains(.shieldsV2) {
+    if corvettes.power > 0 && technologies.contains(.shieldsV2) {
+      print("Improved shields will absorb 1 approach damage")
       approachAbsorption += 1
     }
-    if side == .attacker, technologies.contains(.autoDrones), technologies.contains(.autoDronesV2) {
+    if side == .invader, technologies.contains(.autoDrones), technologies.contains(.autoDronesV2) {
+      print("Autonomous drones will absorb 1 approach damage")
       approachAbsorption += 1
+    }
+    if side == .invader, carriers.power > 0 {
+      print("Carriers will deploy \(min(carriers.power, carriers.deployablePower)) corvettes")
+      corvettes.power += min(carriers.power, carriers.deployablePower)
+    }
+  }
+
+
+  func enterSalvoStep() {
+    if corvettes.power > 0 && (technologies.contains(.shields) || technologies.contains(.shieldsV2)) {
+      print("Shields will absorb 1 salvo damage")
+      salvoAbsorption += 1
+    }
+    if side == .invader, technologies.contains(.autoDrones) {
+      print("Autodrones will absorb 1 salvo damage")
+      salvoAbsorption += 1
+      if technologies.contains(.autoDronesV2) {
+        print("Advanced Autodrones will absorb 1 more salvo damage")
+        salvoAbsorption += 1
+      }
+    }
+    if side == .defender && carriers.power > 0 {
+      print("Carriers will absorb \(carriers.power) salvo damage")
+      salvoAbsorption += carriers.power
     }
   }
 
@@ -70,20 +93,7 @@ class Player {
       return
     }
     print("suffers damage")
-
-    fleets.first?.damage()
-  }
-
-  func enterSalvoStep(){
-    if hasCorvettes && (technologies.contains(.shields) || technologies.contains(.shieldsV2)) {
-      salvoAbsorption += 1
-    }
-    if side == .attacker, technologies.contains(.autoDrones) {
-      approachAbsorption += 1
-      if technologies.contains(.autoDronesV2) {
-        approachAbsorption += 1
-      }
-    }
+    fleets.first(where: {$0.power > 0})?.damage()
   }
 
   func sufferSalvoDamage() {
@@ -93,6 +103,6 @@ class Player {
       return
     }
     print("suffers damage")
-    fleets.first?.damage()
+    fleets.first(where: {$0.power > 0})?.damage()
   }
 }

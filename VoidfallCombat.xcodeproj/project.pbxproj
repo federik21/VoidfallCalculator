@@ -20,6 +20,8 @@
 		BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
 		BB7E3885291E7455007A2B88 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3872291E6F61007A2B88 /* Player.swift */; };
 		BB7E3886291E7466007A2B88 /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E386E291E69FE007A2B88 /* Ships.swift */; };
+		BB7E3888291EA63E007A2B88 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3887291EA63E007A2B88 /* Carrier.swift */; };
+		BB7E3889291EA63E007A2B88 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3887291EA63E007A2B88 /* Carrier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 		BB7E3872291E6F61007A2B88 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		BB7E387A291E742A007A2B88 /* VoidfallCombatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoidfallCombatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidfallCombatTests.swift; sourceTree = "<group>"; };
+		BB7E3887291EA63E007A2B88 /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7E386E291E69FE007A2B88 /* Ships.swift */,
+				BB7E3887291EA63E007A2B88 /* Carrier.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -256,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7E3888291EA63E007A2B88 /* Carrier.swift in Sources */,
 				BB7E386F291E69FE007A2B88 /* Ships.swift in Sources */,
 				BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */,
 				BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */,
@@ -279,6 +284,7 @@
 			files = (
 				BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */,
 				BB7E3886291E7466007A2B88 /* Ships.swift in Sources */,
+				BB7E3889291EA63E007A2B88 /* Carrier.swift in Sources */,
 				BB7E3885291E7455007A2B88 /* Player.swift in Sources */,
 				BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */,
 			);

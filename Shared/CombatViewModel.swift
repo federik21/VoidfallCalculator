@@ -25,9 +25,9 @@ class CombatViewModel {
   }
 
   func approachStep() {
+    print("start Approach step")
     attacker.enterApproachStep()
     defender.enterApproachStep()
-  print("start Approach step")
    while sectorDefenses > 0 {
      sectorDefenses -= 1
       print("attacker")
@@ -37,6 +37,7 @@ class CombatViewModel {
   }
 
   func firstSalvo(){
+    print("Start salvo step")
     attacker.enterSalvoStep()
     defender.enterSalvoStep()
     salvoStep()
