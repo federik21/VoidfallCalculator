@@ -17,16 +17,17 @@ enum Side {
 }
 
 enum FleetTypes {
-  case corvette, carrier, destroyer
+  case corvette, carrier, destroyer, dreadnought
 }
 
 class Player {
   var corvettes: Corvette = Corvette(power: 0)
   var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
   var destroyers: Destroyer = Destroyer()
+  var dreadnoughts: Dreadnought = Dreadnought()
 
   var fleets: [Fleet] {
-    return [corvettes, carriers, destroyers]
+    return [corvettes, carriers, destroyers, dreadnoughts]
   }
   var technologies: [Technology] = []
   var side: Side
@@ -38,7 +39,7 @@ class Player {
     var initiative = 0
     for fleet in fleets {
       initiative += fleet.power
-      if fleet is Destroyer && fleet.power > 0 {
+      if (fleet is Destroyer || fleet is Dreadnought) && fleet.power > 0 {
         initiative += 1
       }
     }
@@ -70,6 +71,9 @@ class Player {
       print("Carriers will deploy \(min(carriers.power, carriers.deployablePower)) corvettes")
       corvettes.power += min(carriers.power, carriers.deployablePower)
     }
+    if side == .invader {
+      self.approachAbsorption += dreadnoughts.power
+    }
   }
 
 
@@ -89,6 +93,10 @@ class Player {
     if side == .defender && carriers.power > 0 {
       print("Carriers will absorb \(carriers.power) salvo damage")
       salvoAbsorption += carriers.power
+    }
+    if side == .defender && dreadnoughts.power > 0 {
+      print("Dreadnoughts will absorb \(dreadnoughts.power) salvo damage")
+      salvoAbsorption += dreadnoughts.power
     }
   }
 
