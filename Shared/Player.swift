@@ -29,6 +29,8 @@ class Player {
   var fleets: [Fleet] {
     return [corvettes, carriers, destroyers, dreadnoughts]
   }
+
+  // Technologies that would be used by the attacker
   var technologies: [Technology] = []
   var side: Side
 
@@ -119,6 +121,7 @@ class Player {
         print("prevented salvo damage")
       } else {
         print("suffers damage")
+        // Remove the first ship for the sake of simplicity
         fleets.first(where: {$0.power > 0})?.damage()
       }
     }
