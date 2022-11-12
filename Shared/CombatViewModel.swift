@@ -61,19 +61,19 @@ class CombatViewModel {
       print("attacker")
       attacker.sufferApproachDamage(total: damageForAttacker)
     }
-    print("attacker")
     startSalvo()
+    print("End of Approach")
+
   }
 
   func startSalvo(){
-    print("Start salvo step")
+    print("Entering salvo step")
     attacker.enterSalvoStep()
     defender.enterSalvoStep()
-
-    salvoStep(additionalAttackerDamage: attacker.destroyers.power)
+    salvoStep(first: true)
   }
 
-  func salvoStep(additionalAttackerDamage: Int = 0) {
+  func salvoStep(first: Bool = false) {
     print("salvo step")
     guard attacker.power > 0, defender.power > 0 else {
       print("no more fleet power on one side, combat is over")
@@ -84,11 +84,11 @@ class CombatViewModel {
       print("attacker")
       attacker.sufferSalvoDamage()
       print("defender")
-      defender.sufferSalvoDamage(plus: additionalAttackerDamage)
+      defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
     } else if attacker.initiative > defender.initiative {
       print("defender")
 
-      defender.sufferSalvoDamage(plus: additionalAttackerDamage)
+      defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
       if defender.power > 0 {
         print("then attacker ")
         attacker.sufferSalvoDamage()
@@ -98,10 +98,10 @@ class CombatViewModel {
       attacker.sufferSalvoDamage()
       if attacker.power > 0 {
         print("then defender")
-        defender.sufferSalvoDamage(plus: additionalAttackerDamage)
+        defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
       }
     }
-    salvoStep()
+    salvoStep(first: false)
   }
 
   func combatComplete() {
