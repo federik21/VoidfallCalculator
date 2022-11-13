@@ -9,7 +9,7 @@ import Foundation
 
 enum Technology {
   case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2,
-       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells
+       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells, targeting, targetingV2
 }
 
 enum Side {
@@ -39,6 +39,9 @@ class Player {
   var salvoAbsorption: Int = 0
 
   var initiative: Int {
+    if technologies.contains(.targetingV2) && corvettes.power > 0 {
+      return 9001
+    }
     var initiative = 0
     for fleet in fleets {
       guard !(fleet is Sentry && side == .defender) else {
@@ -48,6 +51,9 @@ class Player {
       if (fleet is Destroyer || fleet is Dreadnought) && fleet.power > 0 {
         initiative += 1
       }
+    }
+    if technologies.contains(.targeting) && corvettes.power > 0 {
+      initiative += 5
     }
     return initiative
   }
