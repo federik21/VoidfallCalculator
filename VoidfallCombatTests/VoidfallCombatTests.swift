@@ -132,8 +132,8 @@ class VoidfallCombatTests: XCTestCase {
     defender.corvettes.power = 2
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
-    assert(attacker.power == 0)
-    assert(defender.power == 1)
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
   }
 
   func testDestroyers2() {
@@ -185,4 +185,27 @@ class VoidfallCombatTests: XCTestCase {
     attacker.destroyers.power = 0
     assert(attacker.initiative == 0)
     }
+  func testTorpedoes() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 2
+    attacker.technologies = [.torpedoes]
+    defender.corvettes.power = 2
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
+  }
+
+  func testTorpedoesV2() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.corvettes.power = 4
+    attacker.technologies = [.torpedoesV2]
+    defender.corvettes.power = 6
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
+    combat.combat()
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
+  }
 }

@@ -82,14 +82,13 @@ class CombatViewModel {
       return
     }
     if attacker.initiative == defender.initiative {
+      print("Same time, defender")
+      defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
       print("attacker")
       attacker.sufferSalvoDamage()
-      print("defender")
-      defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
     } else if attacker.initiative > defender.initiative {
       print("defender")
-
-      defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
+      defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
       if defender.power > 0 {
         print("then attacker ")
         attacker.sufferSalvoDamage()
@@ -99,7 +98,7 @@ class CombatViewModel {
       attacker.sufferSalvoDamage()
       if attacker.power > 0 {
         print("then defender")
-        defender.sufferSalvoDamage(plus: first ? attacker.destroyers.power : 0)
+        defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
       }
     }
     salvoStep(first: false)
@@ -109,5 +108,18 @@ class CombatViewModel {
     print("final result")
     print("attacker \(attacker.power)")
     print("defender \(defender.power)")
+  }
+
+  fileprivate func additionalAttackerDamage(firstSalvo: Bool) -> Int{
+    var additionalAttackerDamage = 0
+    if firstSalvo {
+      if (attacker.technologies.contains(.torpedoes) || attacker.technologies.contains(.torpedoesV2))  && attacker.corvettes.power > 0 {
+        additionalAttackerDamage += 1
+      }
+      additionalAttackerDamage += attacker.destroyers.power
+    } else if attacker.technologies.contains(.torpedoesV2) && attacker.corvettes.power > 0 {
+      additionalAttackerDamage += 1
+    }
+    return additionalAttackerDamage
   }
 }
