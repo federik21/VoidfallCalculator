@@ -28,6 +28,8 @@
 		BB7E388F291EB65E007A2B88 /* Destroyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E388D291EB65E007A2B88 /* Destroyer.swift */; };
 		BB8E08FE292007C4005EF514 /* Dreadnought.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8E08FD292007C4005EF514 /* Dreadnought.swift */; };
 		BB8E08FF292007C4005EF514 /* Dreadnought.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8E08FD292007C4005EF514 /* Dreadnought.swift */; };
+		BBAE64BD29210A580053DC90 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAE64BC29210A580053DC90 /* Sentry.swift */; };
+		BBAE64BE29210A580053DC90 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAE64BC29210A580053DC90 /* Sentry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,7 @@
 		BB7E388A291EB645007A2B88 /* Fleet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
 		BB7E388D291EB65E007A2B88 /* Destroyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destroyer.swift; sourceTree = "<group>"; };
 		BB8E08FD292007C4005EF514 /* Dreadnought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreadnought.swift; sourceTree = "<group>"; };
+		BBAE64BC29210A580053DC90 /* Sentry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,7 @@
 				BB7E386E291E69FE007A2B88 /* Corvette.swift */,
 				BB7E3887291EA63E007A2B88 /* Carrier.swift */,
 				BB7E388D291EB65E007A2B88 /* Destroyer.swift */,
+				BBAE64BC29210A580053DC90 /* Sentry.swift */,
 				BB7E388A291EB645007A2B88 /* Fleet.swift */,
 				BB8E08FD292007C4005EF514 /* Dreadnought.swift */,
 			);
@@ -276,6 +280,7 @@
 				BB7E386F291E69FE007A2B88 /* Corvette.swift in Sources */,
 				BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */,
 				BB7E388E291EB65E007A2B88 /* Destroyer.swift in Sources */,
+				BBAE64BD29210A580053DC90 /* Sentry.swift in Sources */,
 				BB8E08FE292007C4005EF514 /* Dreadnought.swift in Sources */,
 				BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */,
 				BB7E3873291E6F61007A2B88 /* Player.swift in Sources */,
@@ -305,6 +310,7 @@
 				BB7E388C291EB645007A2B88 /* Fleet.swift in Sources */,
 				BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */,
 				BB7E388F291EB65E007A2B88 /* Destroyer.swift in Sources */,
+				BBAE64BE29210A580053DC90 /* Sentry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

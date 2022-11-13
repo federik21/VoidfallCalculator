@@ -48,10 +48,8 @@ class CombatViewModel {
     if defender.technologies.contains(.deepSpaceMissilesV2twoSY) {
       damageForAttacker += 2
     }
-    while sectorDefenses > 0 {
-      sectorDefenses -= 1
-      damageForAttacker += 1
-    }
+
+    damageForAttacker += sectorDefenses + defender.sentries.power
 
     if damageForDefender > 0 {
       print("defender")

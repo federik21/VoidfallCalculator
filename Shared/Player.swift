@@ -17,7 +17,7 @@ enum Side {
 }
 
 enum FleetTypes {
-  case corvette, carrier, destroyer, dreadnought
+  case corvette, carrier, destroyer, dreadnought, sentry
 }
 
 class Player {
@@ -25,9 +25,10 @@ class Player {
   var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
   var destroyers: Destroyer = Destroyer()
   var dreadnoughts: Dreadnought = Dreadnought()
+  var sentries: Sentry = Sentry()
 
   var fleets: [Fleet] {
-    return [corvettes, carriers, destroyers, dreadnoughts]
+    return [corvettes, carriers, destroyers, dreadnoughts, sentries]
   }
 
   // Technologies that would be used by the attacker
@@ -40,6 +41,9 @@ class Player {
   var initiative: Int {
     var initiative = 0
     for fleet in fleets {
+      guard !(fleet is Sentry && side == .defender) else {
+        continue
+      }
       initiative += fleet.power
       if (fleet is Destroyer || fleet is Dreadnought) && fleet.power > 0 {
         initiative += 1
