@@ -58,6 +58,9 @@ class CombatViewModel {
       defender.sufferApproachDamage(total: damageForDefender)
     }
     if damageForAttacker > 0 {
+      if defender.technologies.contains(.energyCells) {
+        damageForAttacker += 1
+      }
       print("attacker")
       attacker.sufferApproachDamage(total: damageForAttacker)
     }

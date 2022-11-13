@@ -9,7 +9,7 @@ import Foundation
 
 enum Technology {
   case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2,
-       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY
+       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells
 }
 
 enum Side {

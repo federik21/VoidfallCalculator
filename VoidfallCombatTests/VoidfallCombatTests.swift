@@ -146,4 +146,16 @@ class VoidfallCombatTests: XCTestCase {
     assert(attacker.power == 0)
     assert(defender.power == 1)
   }
+
+  func testEnergyCells() {
+    let attacker = Player(side: .invader)
+    let defender = Player(side: .defender)
+    attacker.destroyers.power = 2
+    defender.corvettes.power = 1
+    defender.technologies.append(.energyCells)
+    let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 1)
+    combat.combat()
+    assert(attacker.power == 0)
+    assert(defender.power == 1)
+  }
 }
