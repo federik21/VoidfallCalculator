@@ -39,9 +39,6 @@ class Player {
   var salvoAbsorption: Int = 0
 
   var initiative: Int {
-    if technologies.contains(.targetingV2) && corvettes.power > 0 {
-      return 9001
-    }
     var initiative = 0
     for fleet in fleets {
       guard !(fleet is Sentry && side == .defender) else {
@@ -52,8 +49,15 @@ class Player {
         initiative += 1
       }
     }
+    // During Combat, if you have any number of Corvette Fleet Power present, gain +5 Initiative
     if technologies.contains(.targeting) && corvettes.power > 0 {
       initiative += 5
+    }
+    //    During Combat, you always deal Damage first if you have at least
+    //  1 Initiative at the start of a Salvo step. This does not require a Corvette
+    //  Fleet Power to be present.
+    if technologies.contains(.targetingV2) && initiative > 0 {
+      initiative += 9000
     }
     return initiative
   }

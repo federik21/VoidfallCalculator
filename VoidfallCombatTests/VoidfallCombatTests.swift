@@ -171,14 +171,18 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testTargeting() {
-    let attacker = Player(side: .invader)
+    let attacker = Player(side: .defender)
     attacker.corvettes.power = 1
+    attacker.destroyers.power = 1
     attacker.sentries.power = 2
     attacker.technologies.append(.targeting)
     assert(attacker.initiative == 8)
 
+    attacker.corvettes.power = 0
     attacker.technologies.append(.targetingV2)
     assert(attacker.initiative > 9000)
-    
-  }
+
+    attacker.destroyers.power = 0
+    assert(attacker.initiative == 0)
+    }
 }
