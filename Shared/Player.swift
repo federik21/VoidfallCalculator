@@ -92,7 +92,6 @@ class Player {
     }
   }
 
-
   func enterSalvoStep() {
     if corvettes.power > 0 && (technologies.contains(.shields) || technologies.contains(.shieldsV2)) {
       print("Shields will absorb 1 salvo damage")
@@ -116,28 +115,41 @@ class Player {
     }
   }
 
-  func sufferApproachDamage(total: Int) {
-    for _ in 1...total {
-      if approachAbsorption > 0 {
-        approachAbsorption -= 1
-        print("prevented approach damage")
-      } else {
-        print("suffers damage")
-        fleets.first(where: {$0.power > 0})?.damage()
-      }
+  func sufferDamage(on fleetType: FleetTypes? = nil) {
+    print("suffers damage")
+    switch fleetType {
+    case .corvette:
+      corvettes.damage()
+    case .carrier:
+      carriers.damage()
+    case .destroyer:
+      destroyers.damage()
+    case .dreadnought:
+      dreadnoughts.damage()
+    case .sentry:
+      corvettes.damage()
+    case .none:
+      fleets.first(where: {$0.power > 0})?.damage()
     }
   }
 
-  func sufferSalvoDamage(plus additionalDamage: Int = 0) {
-    for _ in 1...(1 + additionalDamage) {
-      if salvoAbsorption > 0 {
-        salvoAbsorption -= 1
-        print("prevented salvo damage")
-      } else {
-        print("suffers damage")
-        // Remove the first ship for the sake of simplicity
-        fleets.first(where: {$0.power > 0})?.damage()
-      }
+  func getHealtyFleetsTypes() -> [FleetTypes] {
+    var fleetTypes: [FleetTypes] = []
+    if corvettes.power > 0 {
+      fleetTypes.append(.corvette)
     }
+    if destroyers.power > 0 {
+      fleetTypes.append(.destroyer)
+    }
+    if carriers.power > 0 {
+      fleetTypes.append(.carrier)
+    }
+    if dreadnoughts.power > 0 {
+      fleetTypes.append(.dreadnought)
+    }
+    if sentries.power > 0 {
+      fleetTypes.append(.sentry)
+    }
+    return fleetTypes
   }
 }

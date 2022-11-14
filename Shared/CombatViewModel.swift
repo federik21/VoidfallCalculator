@@ -10,6 +10,9 @@ import Foundation
 class CombatViewModel {
   var attacker: Player
   var defender: Player
+  enum CombatStep {
+    case approach, firstSalvo, salvo
+  }
   var sectorDefenses: Int
   init (attacker: Player,
         defender: Player,
@@ -53,14 +56,14 @@ class CombatViewModel {
 
     if damageForDefender > 0 {
       print("defender")
-      defender.sufferApproachDamage(total: damageForDefender)
+      inflictDamage(on: defender, total: damageForDefender, step: .approach)
     }
     if damageForAttacker > 0 {
       if defender.technologies.contains(.energyCells) {
         damageForAttacker += 1
       }
       print("attacker")
-      attacker.sufferApproachDamage(total: damageForAttacker)
+      inflictDamage(on: attacker, total: damageForAttacker, step: .approach)
     }
     startSalvo()
     print("End of Approach")
@@ -76,6 +79,7 @@ class CombatViewModel {
 
   func salvoStep(first: Bool = false) {
     print("salvo step")
+    let step = first ? CombatStep.firstSalvo : CombatStep.salvo
     guard attacker.power > 0, defender.power > 0 else {
       print("no more fleet power on one side, combat is over")
       combatComplete()
@@ -83,22 +87,22 @@ class CombatViewModel {
     }
     if attacker.initiative == defender.initiative {
       print("Same time, defender")
-      defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
+      inflictDamage(on: defender, step: step)
       print("attacker")
-      attacker.sufferSalvoDamage()
+      inflictDamage(on: attacker, step: step)
     } else if attacker.initiative > defender.initiative {
       print("defender")
-      defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
+      inflictDamage(on: defender, step: step)
       if defender.power > 0 {
         print("then attacker ")
-        attacker.sufferSalvoDamage()
+        inflictDamage(on: attacker, step: step)
       }
     } else if attacker.initiative < defender.initiative {
       print("attacker ")
-      attacker.sufferSalvoDamage()
+      inflictDamage(on: attacker, step: step)
       if attacker.power > 0 {
         print("then defender")
-        defender.sufferSalvoDamage(plus: additionalAttackerDamage(firstSalvo: first))
+        inflictDamage(on: defender, step: step)
       }
     }
     salvoStep(first: false)
@@ -110,16 +114,33 @@ class CombatViewModel {
     print("defender \(defender.power)")
   }
 
-  fileprivate func additionalAttackerDamage(firstSalvo: Bool) -> Int{
-    var additionalAttackerDamage = 0
-    if firstSalvo {
-      if (attacker.technologies.contains(.torpedoes) || attacker.technologies.contains(.torpedoesV2))  && attacker.corvettes.power > 0 {
-        additionalAttackerDamage += 1
+  func inflictDamage(on player: Player, total: Int = 1, step: CombatStep) {
+    var newTotal = total
+    if player.side == .defender {
+      if step == .firstSalvo {
+        if (attacker.technologies.contains(.torpedoes) || attacker.technologies.contains(.torpedoesV2))  && attacker.corvettes.power > 0 {
+          newTotal += 1
+        }
+        newTotal += attacker.destroyers.power
+      } else if step == .salvo && attacker.technologies.contains(.torpedoesV2) && attacker.corvettes.power > 0 {
+        newTotal += 1
       }
-      additionalAttackerDamage += attacker.destroyers.power
-    } else if attacker.technologies.contains(.torpedoesV2) && attacker.corvettes.power > 0 {
-      additionalAttackerDamage += 1
     }
-    return additionalAttackerDamage
+
+    for _ in 1...newTotal {
+      if (step == .approach)
+          && player.approachAbsorption > 0 {
+        player.approachAbsorption -= 1
+        continue
+      }
+      if (step == .firstSalvo || step == .salvo)
+          && player.salvoAbsorption > 0 {
+        player.salvoAbsorption -= 1
+        continue
+      }
+      let fleets = player.getHealtyFleetsTypes()
+      // TODO: player should choose what power fleet to lose, if they has more
+      player.sufferDamage(on: fleets.first)
+    }
   }
 }
