@@ -143,8 +143,8 @@ class VoidfallCombatTests: XCTestCase {
     defender.corvettes.power = 4
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
-    assert(attacker.power == 1)
-    assert(defender.power == 0)
+    assert(attacker.power == 0)
+    assert(defender.power == 1)
   }
 
   func testEnergyCells() {
@@ -159,31 +159,29 @@ class VoidfallCombatTests: XCTestCase {
     assert(defender.power == 1)
   }
 
-  func testSentryCells() {
+  func testSentry() {
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
     defender.sentries.power = 2
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
-    assert(attacker.power == 0)
-    assert(defender.power == 1)
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
   }
 
   func testTargeting() {
-    let attacker = Player(side: .defender)
-    attacker.corvettes.power = 1
-    attacker.destroyers.power = 1
-    attacker.sentries.power = 2
-    attacker.technologies.append(.targeting)
-    assert(attacker.initiative == 8)
+    let defender = Player(side: .defender)
+    defender.corvettes.power = 1
+    defender.destroyers.power = 1
+    defender.sentries.power = 2
+    defender.technologies.append(.targeting)
+    assert(defender.initiative == 7)
 
-    attacker.corvettes.power = 0
-    attacker.technologies.append(.targetingV2)
-    assert(attacker.initiative > 9000)
-
-    attacker.destroyers.power = 0
-    assert(attacker.initiative == 0)
+    defender.corvettes.power = 0
+    defender.destroyers.power = 0
+//     Still has sentries
+    assert(defender.initiative == 0)
   }
   func testTorpedoes() {
     let attacker = Player(side: .invader)

@@ -1,4 +1,4 @@
-//
+//combatLog
 //  ContentView.swift
 //  Shared
 //
@@ -12,6 +12,7 @@ struct ContentView: View {
   @StateObject private var viewModel: CombatViewModel = CombatViewModel(attacker: Player(side: .invader), defender: Player(side: .defender), sectorDefenses: 0)
 
   @State private var showPopup = false
+  @State private var showCombatResult = false
   @State private var activeSide = Side.invader
 
   var body: some View {
@@ -40,14 +41,16 @@ struct ContentView: View {
           }
           Stepper(
             "Sector Defenses \(viewModel.sectorDefenses)",
-            value: $viewModel.sectorDefenses).padding(.horizontal)
+            value: $viewModel.sectorDefenses,
+            in: 0...3).padding(.horizontal)
           ScrollView {
             FleetView(player: viewModel.defender)
           }
           TechnologyView(player: viewModel.defender)
         }
         Button(action: {
-          print("Combat")
+          showCombatResult.toggle()
+          viewModel.combat()
         }) {
           Text("Calculate")
             .frame(maxWidth: .infinity)
@@ -65,6 +68,13 @@ struct ContentView: View {
       }
       // to pass the object to every subview
     }.environmentObject(viewModel)
+      .alert(isPresented: $showCombatResult) {
+        Alert(
+          title: Text("Result"),
+          message: Text(viewModel.combatLog),
+          dismissButton: .default(Text("OK"))
+        )
+      }
   }
 }
 
@@ -80,7 +90,8 @@ struct TechnologyView: View {
 
   var body: some View {
     List {
-      Section(header: Text("TECHNOLOGIES")) {            ForEach(player.getTech()) { tech in
+      Section(header: Text("TECHNOLOGIES")) {
+        ForEach(player.getTech()) { tech in
         TechCell(tech: tech).frame(height: 12)
       }}
     }

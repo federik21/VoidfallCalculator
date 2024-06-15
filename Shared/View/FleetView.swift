@@ -86,7 +86,16 @@ struct FleetView: View {
               // Manually notify observers about the change
               viewModel.objectWillChange.send()
             }
-          )
+          )).padding(.horizontal)
+          Stepper(
+            " - Deployable Power \(player.carriers.deployablePower)", value: Binding(
+              get: { player.carriers.deployablePower },
+              set: { newValue in
+                player.carriers.deployablePower = newValue
+                // Manually notify observers about the change
+                viewModel.objectWillChange.send()
+              }
+            ), in: 0...15
         ).padding(.horizontal)
       } else {
         /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/

@@ -14,6 +14,9 @@ class CombatViewModel: ObservableObject {
   @Published var defender: Player
 
   @Published var sectorDefenses: Int
+  @Published var combatLog: String = ""
+  
+  var combatLogCancellable: AnyCancellable?
 
   init (attacker: Player,
         defender: Player,
@@ -25,10 +28,15 @@ class CombatViewModel: ObservableObject {
   }
 
   func combat() {
+    combatLog = ""
     let cm = CombatManager(sectorDefenses: sectorDefenses,
                            attacker: attacker,
                            defender: defender)
+    combatLogCancellable = cm.$logLine.sink{ log in
+      self.combatLog.append(log + "\n")
+    }
     cm.combat()
+    combatLogCancellable = nil
   }
 }
 

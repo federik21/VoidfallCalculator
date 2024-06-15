@@ -14,7 +14,7 @@ enum TechnologyType: String, CaseIterable, Identifiable {
        deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells, targeting, targetingV2, torpedoes, torpedoesV2
 }
 
-enum Side {
+enum Side: String {
   case invader, defender
 }
 
@@ -48,19 +48,13 @@ class Player: ObservableObject {
         continue
       }
       initiative += fleet.power
-      if (fleet is Destroyer || fleet is Dreadnought) && fleet.power > 0 {
-        initiative += fleet.power
+      if ((fleet is Destroyer && side == .invader) || fleet is Dreadnought) && fleet.power > 0 {
+        initiative += 1
       }
     }
-    if technologies.contains(.targeting) && corvettes.power > 0 {
+    if technologies.contains(.targeting) && hasCorvettes {
       // During Combat, if you have any number of Corvette Fleet Power present, gain +5 Initiative
       initiative += 5
-    }
-    //  During Combat, you always deal Damage first if you have at least
-    //  1 Initiative at the start of a Salvo step. This does not require a Corvette
-    //  Fleet Power to be present.
-    if technologies.contains(.targetingV2) && initiative > 0 {
-      initiative += 9000
     }
     return initiative
   }
@@ -79,7 +73,6 @@ class Player: ObservableObject {
   }
 
   func sufferDamage(on fleetType: FleetTypes) {
-    print("suffers damage")
     switch fleetType {
     case .corvette:
       corvettes.damage()
