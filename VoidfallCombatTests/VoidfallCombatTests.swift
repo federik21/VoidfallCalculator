@@ -143,8 +143,8 @@ class VoidfallCombatTests: XCTestCase {
     defender.corvettes.power = 4
     let combat = CombatViewModel(attacker: attacker, defender: defender, sectorDefenses: 0)
     combat.combat()
-    assert(attacker.power == 0)
-    assert(defender.power == 1)
+    assert(attacker.power == 1)
+    assert(defender.power == 0)
   }
 
   func testEnergyCells() {

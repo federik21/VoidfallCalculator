@@ -31,8 +31,8 @@ class CombatManager {
 
   func approachStep() {
     print("start Approach step")
-    attacker.enterApproachStep()
-    defender.enterApproachStep()
+    enterApproachStep(player: attacker)
+    enterApproachStep(player: defender)
     var damageForAttacker = 0
     var damageForDefender = 0
     if attacker.destroyers.power > 0 && attacker.technologies.contains(.destroyersV2) {
@@ -57,13 +57,12 @@ class CombatManager {
     }
     startSalvo()
     print("End of Approach")
-
   }
 
   func startSalvo(){
     print("Entering salvo step")
-    attacker.enterSalvoStep()
-    defender.enterSalvoStep()
+    enterSalvoStep(player: attacker)
+    enterSalvoStep(player: defender)
     salvoStep(first: true)
   }
 
@@ -131,6 +130,48 @@ class CombatManager {
       let fleets = player.getHealtyFleetsTypes()
       // TODO: player should choose what power fleet to lose, if they has more
       player.sufferDamage(on: fleets.first!)
+    }
+  }
+
+  func enterApproachStep(player: Player) {
+    if player.hasCorvettes && player.technologies.contains(.shieldsV2) {
+      print("Improved shields will absorb 1 approach damage")
+      player.approachAbsorption += 1
+    }
+    if player.side == .invader, player.technologies.contains(.autoDrones), player.technologies.contains(.autoDronesV2) {
+      print("Autonomous drones will absorb 1 approach damage")
+      player.approachAbsorption += 1
+    }
+    if player.side == .invader, player.hasCarrier {
+      print("Carriers will deploy \(min(player.carriers.power, player.carriers.deployablePower)) corvettes")
+      // Power is capped by carriers fleet power
+      player.corvettes.power += min(player.carriers.power, player.carriers.deployablePower)
+    }
+    if player.side == .invader {
+      player.approachAbsorption += player.dreadnoughts.power
+    }
+  }
+
+  func enterSalvoStep(player: Player) {
+    if player.hasCorvettes && ((player.technologies.contains(.shields) || player.technologies.contains(.shieldsV2))) {
+      print("Shields will absorb 1 salvo damage")
+      player.salvoAbsorption += 1
+    }
+    if player.side == .invader, player.technologies.contains(.autoDrones) {
+      print("Autodrones will absorb 1 salvo damage")
+      player.salvoAbsorption += 1
+      if player.technologies.contains(.autoDronesV2) {
+        print("Advanced Autodrones will absorb 1 more salvo damage")
+        player.salvoAbsorption += 1
+      }
+    }
+    if player.side == .defender && player.hasCarrier {
+      print("Carriers will absorb \(player.carriers.power) salvo damage")
+      player.salvoAbsorption += player.carriers.power
+    }
+    if player.side == .defender && player.hasDreadnought {
+      print("Dreadnoughts will absorb \(player.dreadnoughts.power) salvo damage")
+      player.salvoAbsorption += player.dreadnoughts.power
     }
   }
 }
