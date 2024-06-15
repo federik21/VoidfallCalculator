@@ -1,19 +1,19 @@
 //
-//  Sentry.swift
+//  Destroyer.swift
 //  VoidfallCombat
 //
-//  Created by federico piccirilli on 13/11/2022.
+//  Created by federico piccirilli on 11/11/2022.
 //
 
 import Foundation
 
-class Sentry: Fleet {
+struct Destroyer: Fleet {
   var power: Int
+
   init(power: Int? = 0) {
     self.power = power ?? 0
   }
-  func damage() {
+  mutating func damage() {
     self.power -= 1
   }
 }
-

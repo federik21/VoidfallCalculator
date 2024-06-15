@@ -9,5 +9,5 @@ import Foundation
 
 protocol Fleet {
   var power: Int {get set}
-  func damage()
+  mutating func damage()
 }

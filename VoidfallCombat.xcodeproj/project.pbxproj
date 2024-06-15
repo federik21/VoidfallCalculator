@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0FF1782C1D9E68004F1BB1 /* FleetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */; };
+		BB0FF1792C1D9E68004F1BB1 /* FleetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */; };
 		BB7E385F291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */; };
 		BB7E3860291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */; };
 		BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3850291E69DA007A2B88 /* ContentView.swift */; };
@@ -17,7 +19,6 @@
 		BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
 		BB7E3873291E6F61007A2B88 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3872291E6F61007A2B88 /* Player.swift */; };
 		BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */; };
-		BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
 		BB7E3885291E7455007A2B88 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3872291E6F61007A2B88 /* Player.swift */; };
 		BB7E3886291E7466007A2B88 /* Corvette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E386E291E69FE007A2B88 /* Corvette.swift */; };
 		BB7E3888291EA63E007A2B88 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3887291EA63E007A2B88 /* Carrier.swift */; };
@@ -30,6 +31,13 @@
 		BB8E08FF292007C4005EF514 /* Dreadnought.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8E08FD292007C4005EF514 /* Dreadnought.swift */; };
 		BBAE64BD29210A580053DC90 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAE64BC29210A580053DC90 /* Sentry.swift */; };
 		BBAE64BE29210A580053DC90 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAE64BC29210A580053DC90 /* Sentry.swift */; };
+		BBB95C7D2C1CC35B0048C4D1 /* TechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */; };
+		BBB95C802C1CC7BD0048C4D1 /* CombatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */; };
+		BBB95C822C1CC9060048C4D1 /* CombatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */; };
+		BBB95C832C1CC93F0048C4D1 /* TechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */; };
+		BBB95C852C1CCE250048C4D1 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
+		BBB95C872C1CEAB70048C4D1 /* TechnologyDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */; };
+		BBB95C892C1D0EB80048C4D1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C882C1D0EB80048C4D1 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetView.swift; sourceTree = "<group>"; };
 		BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidfallCombatApp.swift; sourceTree = "<group>"; };
 		BB7E3850291E69DA007A2B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB7E3851291E69DB007A2B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +68,10 @@
 		BB7E388D291EB65E007A2B88 /* Destroyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destroyer.swift; sourceTree = "<group>"; };
 		BB8E08FD292007C4005EF514 /* Dreadnought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreadnought.swift; sourceTree = "<group>"; };
 		BBAE64BC29210A580053DC90 /* Sentry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentry.swift; sourceTree = "<group>"; };
+		BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCell.swift; sourceTree = "<group>"; };
+		BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatManager.swift; sourceTree = "<group>"; };
+		BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyDialog.swift; sourceTree = "<group>"; };
+		BBB95C882C1D0EB80048C4D1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */,
-				BB7E3850291E69DA007A2B88 /* ContentView.swift */,
-				BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */,
+				BBB95C7E2C1CC3E50048C4D1 /* View */,
+				BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */,
 				BB7E3872291E6F61007A2B88 /* Player.swift */,
 				BB7E3851291E69DB007A2B88 /* Assets.xcassets */,
-				BB7E386D291E69EA007A2B88 /* ships */,
+				BB7E386D291E69EA007A2B88 /* Ships */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -127,7 +140,7 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
-		BB7E386D291E69EA007A2B88 /* ships */ = {
+		BB7E386D291E69EA007A2B88 /* Ships */ = {
 			isa = PBXGroup;
 			children = (
 				BB7E386E291E69FE007A2B88 /* Corvette.swift */,
@@ -137,7 +150,7 @@
 				BB7E388A291EB645007A2B88 /* Fleet.swift */,
 				BB8E08FD292007C4005EF514 /* Dreadnought.swift */,
 			);
-			path = ships;
+			path = Ships;
 			sourceTree = "<group>";
 		};
 		BB7E387B291E742A007A2B88 /* VoidfallCombatTests */ = {
@@ -146,6 +159,19 @@
 				BB7E387C291E742A007A2B88 /* VoidfallCombatTests.swift */,
 			);
 			path = VoidfallCombatTests;
+			sourceTree = "<group>";
+		};
+		BBB95C7E2C1CC3E50048C4D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E3850291E69DA007A2B88 /* ContentView.swift */,
+				BBB95C882C1D0EB80048C4D1 /* File.swift */,
+				BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */,
+				BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */,
+				BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */,
+				BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +237,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					BB7E3855291E69DB007A2B88 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -280,8 +306,13 @@
 				BB7E386F291E69FE007A2B88 /* Corvette.swift in Sources */,
 				BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */,
 				BB7E388E291EB65E007A2B88 /* Destroyer.swift in Sources */,
+				BB0FF1782C1D9E68004F1BB1 /* FleetView.swift in Sources */,
+				BBB95C872C1CEAB70048C4D1 /* TechnologyDialog.swift in Sources */,
+				BBB95C7D2C1CC35B0048C4D1 /* TechCell.swift in Sources */,
 				BBAE64BD29210A580053DC90 /* Sentry.swift in Sources */,
 				BB8E08FE292007C4005EF514 /* Dreadnought.swift in Sources */,
+				BBB95C802C1CC7BD0048C4D1 /* CombatManager.swift in Sources */,
+				BBB95C892C1D0EB80048C4D1 /* File.swift in Sources */,
 				BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */,
 				BB7E3873291E6F61007A2B88 /* Player.swift in Sources */,
 				BB7E385F291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */,
@@ -295,6 +326,7 @@
 			files = (
 				BB7E3862291E69DB007A2B88 /* ContentView.swift in Sources */,
 				BB7E3860291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */,
+				BBB95C832C1CC93F0048C4D1 /* TechCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,15 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB7E3884291E7453007A2B88 /* CombatViewModel.swift in Sources */,
 				BB8E08FF292007C4005EF514 /* Dreadnought.swift in Sources */,
 				BB7E3886291E7466007A2B88 /* Corvette.swift in Sources */,
+				BBB95C852C1CCE250048C4D1 /* CombatViewModel.swift in Sources */,
 				BB7E3889291EA63E007A2B88 /* Carrier.swift in Sources */,
 				BB7E3885291E7455007A2B88 /* Player.swift in Sources */,
 				BB7E388C291EB645007A2B88 /* Fleet.swift in Sources */,
+				BB0FF1792C1D9E68004F1BB1 /* FleetView.swift in Sources */,
 				BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */,
 				BB7E388F291EB65E007A2B88 /* Destroyer.swift in Sources */,
 				BBAE64BE29210A580053DC90 /* Sentry.swift in Sources */,
+				BBB95C822C1CC9060048C4D1 /* CombatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -358,9 +393,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -387,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -416,9 +454,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -504,6 +544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 9U7FMUNNDS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -532,6 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 9U7FMUNNDS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -559,7 +601,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U7FMUNNDS;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fp.VoidfallCombatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -579,7 +621,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U7FMUNNDS;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fp.VoidfallCombatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

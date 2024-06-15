@@ -7,13 +7,13 @@
 
 import Foundation
 
-class Dreadnought: Fleet {
+struct Dreadnought: Fleet {
   var power: Int
 
   init(power: Int? = 0) {
     self.power = power ?? 0
   }
-  func damage() {
+  mutating func damage() {
     self.power -= 1
   }
 }

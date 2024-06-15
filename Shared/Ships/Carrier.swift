@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Carrier: Fleet {
+struct Carrier: Fleet {
   var deployablePower: Int
   var power: Int
 
@@ -15,8 +15,7 @@ class Carrier: Fleet {
     self.power = power
     self.deployablePower = deployablePower
   }
-  func damage() {
+  mutating func damage() {
     self.power -= 1
   }
-
 }

@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum Technology {
+enum TechnologyType: String, CaseIterable, Identifiable {
+  var id: String { self.rawValue }
+
   case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2,
        deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells, targeting, targetingV2, torpedoes, torpedoesV2
 }
@@ -20,7 +22,7 @@ enum FleetTypes {
   case corvette, carrier, destroyer, dreadnought, sentry
 }
 
-class Player {
+class Player: ObservableObject {
   var corvettes: Corvette = Corvette(power: 0)
   var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
   var destroyers: Destroyer = Destroyer()
@@ -31,8 +33,8 @@ class Player {
     return [corvettes, carriers, destroyers, dreadnoughts, sentries]
   }
 
-  // Technologies that would be used by the attacker
-  var technologies: [Technology] = []
+  // Technologies that would be used by the player
+  var technologies: [TechnologyType] = []
   var side: Side
 
   var approachAbsorption: Int = 0
@@ -53,7 +55,7 @@ class Player {
     if technologies.contains(.targeting) && corvettes.power > 0 {
       initiative += 5
     }
-    //    During Combat, you always deal Damage first if you have at least
+    //  During Combat, you always deal Damage first if you have at least
     //  1 Initiative at the start of a Salvo step. This does not require a Corvette
     //  Fleet Power to be present.
     if technologies.contains(.targetingV2) && initiative > 0 {
@@ -71,6 +73,7 @@ class Player {
   }
 
   init(side: Side) {
+    print("initClass \(side.hashValue)")
     self.side = side
   }
 
@@ -115,7 +118,7 @@ class Player {
     }
   }
 
-  func sufferDamage(on fleetType: FleetTypes? = nil) {
+  func sufferDamage(on fleetType: FleetTypes) {
     print("suffers damage")
     switch fleetType {
     case .corvette:
@@ -128,8 +131,6 @@ class Player {
       dreadnoughts.damage()
     case .sentry:
       corvettes.damage()
-    case .none:
-      fleets.first(where: {$0.power > 0})?.damage()
     }
   }
 
@@ -152,4 +153,20 @@ class Player {
     }
     return fleetTypes
   }
+
+  func getTech() -> [TechnologyModel] {
+    var attackerTech: [TechnologyModel] = []
+    for t in technologies {
+      attackerTech.append(TechnologyModel(type: t))
+    }
+    return attackerTech
+  }
+}
+// Helpers
+extension Player {
+  var hasCorvettes:Bool { corvettes.power > 0 }
+  var hasDreadnought:Bool { dreadnoughts.power > 0 }
+  var hasDestroyers:Bool { destroyers.power > 0 }
+  var hasCarrier:Bool { carriers.power > 0 }
+  var hasSentries:Bool { sentries.power > 0 }
 }

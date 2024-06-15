@@ -1,25 +1,27 @@
 //
-//  CombatViewModel.swift
+//  CombatManager.swift
 //  VoidfallCombat (iOS)
 //
-//  Created by federico piccirilli on 11/11/2022.
+//  Created by federico piccirilli on 14/06/2024.
 //
 
 import Foundation
 
-class CombatViewModel {
-  var attacker: Player
-  var defender: Player
+class CombatManager {
+
   enum CombatStep {
     case approach, firstSalvo, salvo
   }
-  var sectorDefenses: Int
-  init (attacker: Player,
-        defender: Player,
-        sectorDefenses: Int){
+
+  var sectorDefenses: Int = 0
+
+  var attacker: Player
+  var defender: Player
+
+  init(sectorDefenses: Int, attacker: Player, defender: Player) {
+    self.sectorDefenses = sectorDefenses
     self.attacker = attacker
     self.defender = defender
-    self.sectorDefenses = sectorDefenses
   }
 
   func combat() {
@@ -38,18 +40,6 @@ class CombatViewModel {
     }
     if attacker.technologies.contains(.deepSpaceMissiles) {
       damageForDefender += 1
-    }
-    if attacker.technologies.contains(.deepSpaceMissilesV2oneSY) {
-      damageForDefender += 1
-    }
-    if attacker.technologies.contains(.deepSpaceMissilesV2twoSY) {
-      damageForDefender += 2
-    }
-    if defender.technologies.contains(.deepSpaceMissilesV2oneSY) {
-      damageForAttacker += 1
-    }
-    if defender.technologies.contains(.deepSpaceMissilesV2twoSY) {
-      damageForAttacker += 2
     }
 
     damageForAttacker += sectorDefenses + defender.sentries.power
@@ -140,7 +130,7 @@ class CombatViewModel {
       }
       let fleets = player.getHealtyFleetsTypes()
       // TODO: player should choose what power fleet to lose, if they has more
-      player.sufferDamage(on: fleets.first)
+      player.sufferDamage(on: fleets.first!)
     }
   }
 }

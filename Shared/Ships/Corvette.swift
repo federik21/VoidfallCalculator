@@ -7,12 +7,12 @@
 
 import Foundation
 
-class Corvette: Fleet {
+struct Corvette: Fleet {
   var power: Int
   init(power: Int) {
     self.power = power
   }
-  func damage() {
+  mutating func damage() {
     self.power -= 1
   }
 }
