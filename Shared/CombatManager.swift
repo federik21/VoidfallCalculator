@@ -103,7 +103,6 @@ class CombatManager {
       inflict(on: attacker, newTotal: damageForAttacker, step: .approach)
     }
     startSalvo()
-    logLine = "End of Approach"
   }
 
   func startSalvo(){
@@ -169,12 +168,10 @@ class CombatManager {
     if player.side == .defender {
       if step == .firstSalvo {
         if (attacker.technologies.contains(.torpedoes) || attacker.technologies.contains(.torpedoesV2))  && attacker.hasCorvettes {
-          logLine = "plus 1 damage"
           newTotal += 1
         }
         newTotal += attacker.destroyers.power
       } else if step == .salvo && attacker.technologies.contains(.torpedoesV2) && attacker.corvettes.power > 0 {
-        logLine = "plus 1 damage"
         newTotal += 1
       }
     }

@@ -23,6 +23,11 @@ enum FleetTypes {
 }
 
 class Player: ObservableObject {
+  enum Side: String {
+    case invader, defender
+  }
+  var side: Side
+
   var corvettes: Corvette = Corvette(power: 0)
   var carriers: Carrier = Carrier(power: 0, deployablePower: 0)
   var destroyers: Destroyer = Destroyer()
@@ -33,9 +38,8 @@ class Player: ObservableObject {
     return [corvettes, carriers, destroyers, dreadnoughts, sentries]
   }
 
-  // Technologies that would be used by the player
+//  TODO: consider a dictionary tech : level (no, basic, advanced)
   var technologies: [TechnologyType] = []
-  var side: Side
 
   var approachAbsorption: Int = 0
   var salvoAbsorption: Int = 0
@@ -68,7 +72,6 @@ class Player: ObservableObject {
   }
 
   init(side: Side) {
-    print("initClass \(side.hashValue)")
     self.side = side
   }
 
@@ -83,7 +86,7 @@ class Player: ObservableObject {
     case .dreadnought:
       dreadnoughts.damage()
     case .sentry:
-      corvettes.damage()
+      sentries.damage()
     }
   }
 

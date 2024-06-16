@@ -100,7 +100,7 @@ struct FleetView: View {
       } else {
         /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
       }
-    }
+    }.background(.gray)
   }
 }
 

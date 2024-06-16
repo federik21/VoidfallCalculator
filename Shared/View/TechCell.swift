@@ -15,12 +15,12 @@ struct TechCell: View {
     HStack {
       VStack(alignment: .leading) {
         Text(tech.name)
+          .frame(maxWidth: .infinity, alignment: .leading)
           .font(.callout)
+          .foregroundColor(.gray)
       }
-      Spacer()
-      Image(systemName: "chevron.right")
-        .foregroundColor(.gray)
     }
+    .background(.clear)
     .padding()
   }
 }
