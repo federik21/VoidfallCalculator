@@ -58,11 +58,11 @@ struct TechnologyDialog: View {
           }
         }
         Section(header: Text("TECHNOLOGIES")) {
-          ForEach(TechnologyType.allCases) { technologyType in
+          ForEach(player.getTechsToBuy()) { tech in
             // Only show tech the player hasn't added yet
-            if !player.technologies.contains(technologyType) {
-              Button(technologyType.rawValue.capitalized) {
-                player.technologies.append(technologyType)
+            if !player.hasTech(tech.type) {
+              Button(tech.name) {
+                player.buyTech(tech.type)
                 viewModel.objectWillChange.send()
                 showPopup = false
               }
@@ -80,7 +80,7 @@ struct TechnologyDialog: View {
 
 
 #Preview {
-  let player1 = Player(side: .defender)
+  let player1 = Player(side: .defender, techManager: TechnologyManager())
   player1.corvettes.power = 1
   return TechnologyDialog(showPopup: .constant(true), player: player1)
 }

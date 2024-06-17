@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct VoidfallCombatApp: App {
 
+  var technologyManager = TechnologyManager()
+
   init() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
@@ -25,7 +27,7 @@ struct VoidfallCombatApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView().preferredColorScheme(.dark)
+            ContentView(technologyManager: technologyManager).preferredColorScheme(.dark)
         }
     }
 }

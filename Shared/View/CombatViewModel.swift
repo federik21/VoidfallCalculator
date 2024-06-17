@@ -13,18 +13,14 @@ class CombatViewModel: ObservableObject {
   @Published var attacker: Player
   @Published var defender: Player
 
-  @Published var sectorDefenses: Int
+  @Published var sectorDefenses: Int = 0
   @Published var combatLog: String = ""
   
   var combatLogCancellable: AnyCancellable?
 
-  init (attacker: Player,
-        defender: Player,
-        sectorDefenses: Int) {
-    self.sectorDefenses = sectorDefenses
-    self.attacker = attacker
-    self.defender = defender
-    print("init!")
+  init (technologyManager: TechnologyManager) {
+    self.attacker = Player(side: .invader, techManager: technologyManager)
+    self.defender = Player(side: .defender, techManager: technologyManager)
   }
 
   func combat() {
@@ -37,48 +33,5 @@ class CombatViewModel: ObservableObject {
     }
     cm.combat()
     combatLogCancellable = nil
-  }
-}
-
-struct TechnologyModel: Identifiable {
-  var id = UUID()
-  var name: String
-
-  init(id: UUID = UUID(), type: TechnologyType) {
-    self.id = id
-    self.name = type.toString()
-  }
-}
-
-extension TechnologyType {
-  func toString() -> String{
-    switch self {
-    case .shields:
-      "Shields"
-    case .shieldsV2:
-      "Advanced Shields"
-    case .autoDrones:
-      "Autonomous Drones"
-    case .autoDronesV2:
-      "Advanced Autonomous Drones"
-    case .destroyersV2:
-      "Advanced Destroyers"
-    case .deepSpaceMissiles:
-      "deepSpaceMissiles"
-    case .energyCells:
-      "energyCells"
-    case .targeting:
-      "targeting"
-    case .targetingV2:
-      "Advanced targeting"
-    case .torpedoes:
-      "torpedoes"
-    case .torpedoesV2:
-      "Advanced torpedoes"
-    case .deepSpaceMissilesV2oneSY:
-      "deepSpaceMissilesV2oneSY"
-    case .deepSpaceMissilesV2twoSY:
-      "deepSpaceMissilesV2oneSY"
-    }
   }
 }

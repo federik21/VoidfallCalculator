@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum TechnologyType: String, CaseIterable, Identifiable {
-  var id: String { self.rawValue }
-
-  case shields, shieldsV2, autoDrones, autoDronesV2, destroyersV2,
-       deepSpaceMissiles, deepSpaceMissilesV2oneSY, deepSpaceMissilesV2twoSY, energyCells, targeting, targetingV2, torpedoes, torpedoesV2
-}
-
 enum Side: String {
   case invader, defender
 }
@@ -38,8 +31,7 @@ class Player: ObservableObject {
     return [corvettes, carriers, destroyers, dreadnoughts, sentries]
   }
 
-//  TODO: consider a dictionary tech : level (no, basic, advanced)
-  var technologies: [TechnologyType] = []
+  weak var technologyManager: TechnologyManager?
 
   var approachAbsorption: Int = 0
   var salvoAbsorption: Int = 0
@@ -56,7 +48,7 @@ class Player: ObservableObject {
         initiative += 1
       }
     }
-    if technologies.contains(.targeting) && hasCorvettes {
+    if technologyManager?.checkTechnology(.targeting, for: self) ?? false && hasCorvettes {
       // During Combat, if you have any number of Corvette Fleet Power present, gain +5 Initiative
       initiative += 5
     }
@@ -71,8 +63,25 @@ class Player: ObservableObject {
     return power
   }
 
-  init(side: Side) {
+  init(side: Side, techManager: TechnologyManager) {
     self.side = side
+    self.technologyManager = techManager
+  }
+
+  func hasTech (_ tech: TechnologyType) -> Bool {
+    return technologyManager?.checkTechnology(tech, for: self) ?? false
+  }
+
+  @Published var technologies: [TechnologyModel] = []
+
+  func getTechsToBuy() -> [TechnologyModel] {
+    return technologyManager?.availableTech ?? []
+  }
+
+  func buyTech(_ tech: TechnologyType) {
+    if let technology = technologyManager?.addTechnology(tech, for: self) {
+      technologies.append(technology)
+    }
   }
 
   func sufferDamage(on fleetType: FleetTypes) {
@@ -108,14 +117,6 @@ class Player: ObservableObject {
       fleetTypes.append(.sentry)
     }
     return fleetTypes
-  }
-
-  func getTech() -> [TechnologyModel] {
-    var attackerTech: [TechnologyModel] = []
-    for t in technologies {
-      attackerTech.append(TechnologyModel(type: t))
-    }
-    return attackerTech
   }
 }
 // Helpers

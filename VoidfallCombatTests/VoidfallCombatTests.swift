@@ -33,6 +33,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -44,6 +45,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat2() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -55,6 +57,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat3() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -66,6 +69,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat4() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     attacker.technologies = [.shields]
     let defender = Player(side: .defender)
@@ -78,6 +82,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombat5() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     attacker.technologies = [.shieldsV2]
     let defender = Player(side: .defender)
@@ -90,6 +95,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombatCarrier() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 1
@@ -103,6 +109,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombatCarrier2() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -114,6 +121,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testCombatCarrier3() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -125,6 +133,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testDestroyers() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.destroyers.power = 2
@@ -137,6 +146,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testDestroyers2() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.destroyers.power = 2
@@ -148,6 +158,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testEnergyCells() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.destroyers.power = 2
@@ -160,6 +171,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testSentry() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 3
@@ -171,6 +183,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testTargeting() {
+    var technologyManager = TechnologyManager()
     let defender = Player(side: .defender)
     defender.corvettes.power = 1
     defender.destroyers.power = 1
@@ -184,6 +197,7 @@ class VoidfallCombatTests: XCTestCase {
     assert(defender.initiative == 0)
   }
   func testTorpedoes() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 2
@@ -196,6 +210,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testTorpedoesV2() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 4
@@ -208,6 +223,7 @@ class VoidfallCombatTests: XCTestCase {
   }
 
   func testACH() {
+    var technologyManager = TechnologyManager()
     let attacker = Player(side: .invader)
     let defender = Player(side: .defender)
     attacker.corvettes.power = 1

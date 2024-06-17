@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-  // TODO: inject
-  @StateObject private var viewModel: CombatViewModel = CombatViewModel(attacker: Player(side: .invader), defender: Player(side: .defender), sectorDefenses: 0)
+
+  @StateObject private var viewModel: CombatViewModel
 
   @State private var showPopup = false
   @State private var showCombatResult = false
   @State private var activeSide = Player.Side.invader
+
+  init(technologyManager: TechnologyManager) {
+    _viewModel = StateObject(wrappedValue: CombatViewModel(technologyManager: technologyManager))
+  }
 
   var body: some View {
     NavigationView {
@@ -106,7 +110,7 @@ struct ContentView: View {
 
   struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-      return ContentView()
+      return ContentView(technologyManager: TechnologyManager())
     }
   }
 
@@ -117,8 +121,8 @@ struct ContentView: View {
     var body: some View {
       List {
         Section(header: TechnologyViewHeader(text: "TECHNOLOGIES")) {
-          ForEach(player.getTech()) { tech in
-            TechCell(tech: tech).frame(height: 12).background(.clear)
+          ForEach(player.technologies) { tech in
+            TechCell(tech: tech).frame(height: 12)
           }}
       }
       .listRowInsets(EdgeInsets())

@@ -105,7 +105,7 @@ struct FleetView: View {
 }
 
 #Preview {
-  let player1 = Player(side: .defender)
+  let player1 = Player(side: .defender, techManager: TechnologyManager())
   player1.corvettes.power = 1
   return FleetView(player: player1)
 }

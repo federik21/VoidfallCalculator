@@ -27,6 +27,6 @@ struct TechCell: View {
 
 struct CustomCell_Previews: PreviewProvider {
   static var previews: some View {
-    TechCell(tech: TechnologyModel(type: .autoDrones)).previewLayout(.sizeThatFits)
+    TechCell(tech: TechnologyModel(name: "ahuto dornds", type: .autoDrones, improved: true)).previewLayout(.sizeThatFits)
   }
 }

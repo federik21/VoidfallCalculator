@@ -81,11 +81,11 @@ class CombatManager {
     enterApproachStep(player: defender)
     var damageForAttacker = 0
     var damageForDefender = 0
-    if attacker.hasDestroyers && attacker.technologies.contains(.destroyersV2) {
+    if attacker.hasDestroyers && attacker.hasTech(.destroyersV2) {
       logLine = "Attacker Dealing \(attacker.destroyers.power) damage with Destroyers v2 "
       damageForDefender += attacker.destroyers.power
     }
-    if attacker.technologies.contains(.deepSpaceMissiles) {
+    if attacker.hasTech(.deepSpaceMissiles) {
       damageForDefender += 1
     }
 
@@ -95,7 +95,7 @@ class CombatManager {
       inflict(on: defender, newTotal: damageForDefender, step: .approach)
     }
     if damageForAttacker > 0 {
-      if defender.technologies.contains(.energyCells) {
+      if defender.hasTech(.energyCells) {
         logLine = "Defender triggers energycells"
         damageForAttacker += 1
       }
@@ -128,7 +128,7 @@ class CombatManager {
       inflict(on: attacker, newTotal: totalDamageForAtt, step: step)
       inflict(on: defender, newTotal: totalDamageForDef, step: step)
 
-    } else if attacker.initiative > defender.initiative || (attacker.technologies.contains(.targetingV2) && !defender.technologies.contains(.targetingV2)){
+    } else if attacker.initiative > defender.initiative || (attacker.hasTech(.targetingV2) && !defender.hasTech(.targetingV2)){
       logLine = "Attacker goes first, 1 damage"
       if attacker.initiative > 0 {
         calculateAndInflictDamage(on: defender, step: step)
@@ -137,8 +137,8 @@ class CombatManager {
         logLine = "then Defender 1 damage"
         calculateAndInflictDamage(on: attacker, step: step)
       }
-    } else if attacker.initiative < defender.initiative || (defender.technologies.contains(.targetingV2) &&
-                !attacker.technologies.contains(.targetingV2)) {
+    } else if attacker.initiative < defender.initiative || (defender.hasTech(.targetingV2) &&
+                !attacker.hasTech(.targetingV2)) {
       logLine = "Defender goes first 1 damage"
       if defender.initiative > 0{
         calculateAndInflictDamage(on: attacker, step: step)
@@ -167,11 +167,11 @@ class CombatManager {
     var newTotal = 1
     if player.side == .defender {
       if step == .firstSalvo {
-        if (attacker.technologies.contains(.torpedoes) || attacker.technologies.contains(.torpedoesV2))  && attacker.hasCorvettes {
+        if (attacker.hasTech(.torpedoes) || attacker.hasTech(.torpedoesV2))  && attacker.hasCorvettes {
           newTotal += 1
         }
         newTotal += attacker.destroyers.power
-      } else if step == .salvo && attacker.technologies.contains(.torpedoesV2) && attacker.corvettes.power > 0 {
+      } else if step == .salvo && attacker.hasTech(.torpedoesV2) && attacker.corvettes.power > 0 {
         newTotal += 1
       }
     }
@@ -201,11 +201,11 @@ class CombatManager {
   }
 
   func enterApproachStep(player: Player) {
-    if player.hasCorvettes && player.technologies.contains(.shieldsV2) {
+    if player.hasCorvettes && player.hasTech(.shieldsV2) {
       logLine = "Improved shields will absorb 1 approach damage"
       player.approachAbsorption += 1
     }
-    if player.side == .invader, player.technologies.contains(.autoDrones), player.technologies.contains(.autoDronesV2) {
+    if player.side == .invader, player.hasTech(.autoDrones), player.hasTech(.autoDronesV2) {
       logLine = "Autonomous drones will absorb 1 approach damage"
       player.approachAbsorption += 1
     }
@@ -220,14 +220,14 @@ class CombatManager {
   }
 
   func enterSalvoStep(player: Player) {
-    if player.hasCorvettes && ((player.technologies.contains(.shields) || player.technologies.contains(.shieldsV2))) {
+    if player.hasCorvettes && ((player.hasTech(.shields) || player.hasTech(.shieldsV2))) {
       logLine = "Shields will absorb 1 salvo damage"
       player.salvoAbsorption += 1
     }
-    if player.side == .invader, player.technologies.contains(.autoDrones) {
+    if player.side == .invader, player.hasTech(.autoDrones) {
       logLine = "Autodrones will absorb 1 salvo damage"
       player.salvoAbsorption += 1
-      if player.technologies.contains(.autoDronesV2) {
+      if player.hasTech(.autoDronesV2) {
         logLine = "Advanced Autodrones will absorb 1 more salvo damage"
         player.salvoAbsorption += 1
       }

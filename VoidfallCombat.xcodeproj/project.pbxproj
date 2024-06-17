@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BB0FF1782C1D9E68004F1BB1 /* FleetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */; };
 		BB0FF1792C1D9E68004F1BB1 /* FleetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */; };
+		BB5453D12C1EFD820072B9B5 /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5453D02C1EFD820072B9B5 /* Technology.swift */; };
+		BB5453D22C1F297E0072B9B5 /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5453D02C1EFD820072B9B5 /* Technology.swift */; };
 		BB7E385F291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */; };
 		BB7E3860291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */; };
 		BB7E3861291E69DB007A2B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3850291E69DA007A2B88 /* ContentView.swift */; };
@@ -37,7 +39,6 @@
 		BBB95C832C1CC93F0048C4D1 /* TechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */; };
 		BBB95C852C1CCE250048C4D1 /* CombatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E3870291E6B51007A2B88 /* CombatViewModel.swift */; };
 		BBB95C872C1CEAB70048C4D1 /* TechnologyDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */; };
-		BBB95C892C1D0EB80048C4D1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB95C882C1D0EB80048C4D1 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetView.swift; sourceTree = "<group>"; };
+		BB5453D02C1EFD820072B9B5 /* Technology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technology.swift; sourceTree = "<group>"; };
 		BB7E384F291E69DA007A2B88 /* VoidfallCombatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidfallCombatApp.swift; sourceTree = "<group>"; };
 		BB7E3850291E69DA007A2B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB7E3851291E69DB007A2B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,7 +73,6 @@
 		BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCell.swift; sourceTree = "<group>"; };
 		BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatManager.swift; sourceTree = "<group>"; };
 		BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyDialog.swift; sourceTree = "<group>"; };
-		BBB95C882C1D0EB80048C4D1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 				BBB95C7E2C1CC3E50048C4D1 /* View */,
 				BBB95C7F2C1CC7BD0048C4D1 /* CombatManager.swift */,
 				BB7E3872291E6F61007A2B88 /* Player.swift */,
+				BB5453D02C1EFD820072B9B5 /* Technology.swift */,
 				BB7E3851291E69DB007A2B88 /* Assets.xcassets */,
 				BB7E386D291E69EA007A2B88 /* Ships */,
 			);
@@ -165,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				BB7E3850291E69DA007A2B88 /* ContentView.swift */,
-				BBB95C882C1D0EB80048C4D1 /* File.swift */,
 				BB0FF1772C1D9E68004F1BB1 /* FleetView.swift */,
 				BBB95C862C1CEAB70048C4D1 /* TechnologyDialog.swift */,
 				BBB95C7C2C1CC35B0048C4D1 /* TechCell.swift */,
@@ -309,10 +310,10 @@
 				BB0FF1782C1D9E68004F1BB1 /* FleetView.swift in Sources */,
 				BBB95C872C1CEAB70048C4D1 /* TechnologyDialog.swift in Sources */,
 				BBB95C7D2C1CC35B0048C4D1 /* TechCell.swift in Sources */,
+				BB5453D12C1EFD820072B9B5 /* Technology.swift in Sources */,
 				BBAE64BD29210A580053DC90 /* Sentry.swift in Sources */,
 				BB8E08FE292007C4005EF514 /* Dreadnought.swift in Sources */,
 				BBB95C802C1CC7BD0048C4D1 /* CombatManager.swift in Sources */,
-				BBB95C892C1D0EB80048C4D1 /* File.swift in Sources */,
 				BB7E3871291E6B51007A2B88 /* CombatViewModel.swift in Sources */,
 				BB7E3873291E6F61007A2B88 /* Player.swift in Sources */,
 				BB7E385F291E69DB007A2B88 /* VoidfallCombatApp.swift in Sources */,
@@ -341,6 +342,7 @@
 				BB7E3885291E7455007A2B88 /* Player.swift in Sources */,
 				BB7E388C291EB645007A2B88 /* Fleet.swift in Sources */,
 				BB0FF1792C1D9E68004F1BB1 /* FleetView.swift in Sources */,
+				BB5453D22C1F297E0072B9B5 /* Technology.swift in Sources */,
 				BB7E387D291E742A007A2B88 /* VoidfallCombatTests.swift in Sources */,
 				BB7E388F291EB65E007A2B88 /* Destroyer.swift in Sources */,
 				BBAE64BE29210A580053DC90 /* Sentry.swift in Sources */,
@@ -412,6 +414,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -467,6 +471,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -489,7 +495,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -519,7 +525,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
